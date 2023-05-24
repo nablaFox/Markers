@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 export class Game {
   constructor(players) {
-    this.players = players
-    this.markers = Array(11).fill(true)
+    this.players = players.slice(0)
+    this.markers = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'brown', 'black', 'white', 'grey']
     this.id = uuidv4()
   }
 
@@ -14,9 +14,12 @@ export class Game {
   }
 
   calculateWinner(player) {
-    // lose who take the last marker
     if (this.markers.every(marker => marker === null)) {
-      return this.players.find(_player => _player !== player)
+      return this.players.find(_player => _player.id !== player)
     }
   }
 }
+
+export const games = {}
+
+games.push = (game) => games[game.id] = game
