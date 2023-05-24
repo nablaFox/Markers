@@ -16,16 +16,24 @@ const username = ref(generateUsername())
 </script>
 
 <template>
-  <div>
+  <div class="text-3xl md:text-4xl flex flex-col items-center px-10">
     <template v-if="!searching">
-      <button @click="$emit('search', username)"> 
+
+      <div class="w-full">
+        <label class="block mb-2 font-bold"> Your Username </label>
+        <input
+          class="w-full" 
+          type="text" 
+          v-model="username" 
+        />
+      </div>
+
+      <button 
+        class="border px-5 py-2 mt-10 self-start"
+        @click="$emit('search', username); click = true"
+      > 
         Search Game
       </button>
-
-      <div>
-        <label> Your Username </label>
-        <input type="text" v-model="username" />
-      </div>
     </template>
 
     <div v-else>

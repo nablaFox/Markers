@@ -7,17 +7,23 @@ defineEmits(['select', 'remove'])
 
   <div
     v-if="color"
+    class="w-[90%] rounded h-[35px] marker"
     :style="{ backgroundColor: color }" 
+    :class="{ selected }"
+    @click="selected ? $emit('remove') : $emit('select')"
   >
-    Marker
-
-    <button @click="$emit('select')">
-      Select
-    </button>
-
-    <button v-if="selected" @click="$emit('remove')">
-      Remove
-    </button>
   </div>
 
 </template>
+
+<style scoped>
+/** width transition in the markers */
+.marker {
+  transition: width 0.2s ease;
+}
+
+/** width transition in the markers */
+.marker.selected {
+  width: 100%;
+}
+</style>

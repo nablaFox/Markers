@@ -22,7 +22,7 @@ const {
 </script>
 
 <template>
-  <main>
+  <main class="flex items-center justify-center min-h-screen overflow-hidden">
     <Lobby
       v-if="!inGame"
       :searching="searching"
@@ -40,10 +40,6 @@ const {
       :username="username"
       :opponent="opponent"
     />
-
-    {{ username }}
-    {{ turn }}
-    {{ winner }}
   </main>
 </template>
 
