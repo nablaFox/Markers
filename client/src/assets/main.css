@@ -8,6 +8,13 @@
   font-weight: normal;
 }
 
+@layer utilities {
+  .border, 
+  .border-b-2 {
+    @apply border-gray-700 dark:border-gray-200
+  }
+}
+
 /* normalize text input */
 input[type="text"] {
   -webkit-appearance: none;

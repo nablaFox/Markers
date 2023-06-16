@@ -22,14 +22,12 @@ export const useGame = () => {
   onBeforeMount(async () => {
     const gameID = localStorage.getItem('gameID')
     if (gameID) { // retrieve the game
-      const response = await fetch(`http://localhost:3000/games/${gameID}`)
+      const response = await fetch(`https://markers.icedcube.net/games/${gameID}`)
       if (!response.ok) { return clean() }
       const game = await response.json()
-      console.log('flag', game.value)
-      setup(game)
       username.value = localStorage.getItem('username')
       turn.value = localStorage.getItem('turn') === 'true'
-      return
+      return setup(game)
     }
 
     localStorage.removeItem('gameID')
@@ -38,7 +36,7 @@ export const useGame = () => {
   socket.on('game:start', (game) => {
     setup(game)
     turn.value = game.turn
-    localStorage.setItem('gameID', game.gameId)
+    localStorage.setItem('gameID', game.id)
   })
 
   socket.on('game:move', (move) => { 

@@ -26,3 +26,10 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# firebase
+.firebaserc
+.firebase/
+polar.yml
+firebase-debug.log*
+firebase-debug.*.log*

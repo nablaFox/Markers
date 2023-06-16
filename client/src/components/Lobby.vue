@@ -22,7 +22,7 @@ const username = ref(generateUsername())
       <div class="w-full">
         <label class="block mb-2 font-bold"> Your Username </label>
         <input
-          class="w-full" 
+          class="w-full h-12" 
           type="text" 
           v-model="username" 
         />
@@ -30,7 +30,7 @@ const username = ref(generateUsername())
 
       <button 
         class="border px-5 py-2 mt-10 self-start"
-        @click="$emit('search', username); click = true"
+        @click="$emit('search', username)"
       > 
         Search Game
       </button>

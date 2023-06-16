@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client'
 import { onBeforeMount } from 'vue'
 
-export const socket = io('http://localhost:3000')
+export const socket = io('https://markers.icedcube.net')
 
 socket.on('session', ({ sessionID, userID }) => {
   socket.auth = { sessionID }

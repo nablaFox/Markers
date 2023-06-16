@@ -3,12 +3,13 @@ import { ref, watch } from 'vue'
 import Marker from './Marker.vue'
 
 const emit = defineEmits(['move', 'newGame', 'quit'])
-const props = defineProps(['username', 'opponent', 'turn', 'winner', 'username', 'opponent', 'markers'])
+const props = defineProps(['username', 'opponent', 'turn', 'winner', 'markers'])
 
 const selected = ref([])
 
 const onConfirm = () => {
   selected.value.length > 0
+  && props.turn
   && emit('move', selected.value)
 }
 
@@ -31,7 +32,7 @@ watch(props, (now) => {
 <template>
 
   <div 
-    class="flex flex-col gap-10 text-xl md:text-2xl py-10 max-w-[450px] w-full px-10"
+    class="flex flex-col gap-10 text-xl md:text-2xl py-10 max-w-[500px] w-full px-10"
     :class="[winner && '!justify-center h-screen']"
   >
     <div class="flex flex-col gap-5">
